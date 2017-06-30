@@ -4,7 +4,7 @@ frame_names = dir(strcat(path,'/*.png')); %salvo qui tutti i frame
 bg_frame = imread( strcat(path,'/frame00000.png') ); %assegno frame di backGround
 bg_sum = sum(bg_frame(:));%sommo tutti i valori dei pixel di background
 
-bound = bg_sum * 0.99; %indicativamente se rimango sopra bound vuol dire che i colori non sono cambiati
+bound = 640*480 * 0.8; %indicativamente se rimango sopra bound vuol dire che i colori non sono cambiati
                        % Se sto sotto allora c'? pi? pixel neri (cio? ?
                        % entrato qualcuno)
 
@@ -25,13 +25,14 @@ for frame_name = frame_names'
     %lo leggo per avere l'immagine vera e propria
     frame = imread(path_to_frame); 
     
-    difference = frame( 
+    difference = abs(bg_frame - frame) > 100;
     
+    %imshow(difference)
     %sommo i pixel
-    frame_sum = sum(frame(:));
+    frame_sum = sum(difference(:));
     
     %se ci sono piu' pixel scuri allora e' entrato l'omino
-    if(frame_sum < bound)
+    if(frame_sum > bound)
         %sono sotto il buoud: azzero i frame consecutivi vuoti accettabili
         empty_frames = 0;
         
