@@ -33,12 +33,14 @@ for frame_name = frame_names'
         %imshow(bw);
         [L, Ne]=bwlabel(bw,8);
         %% Measure properties of image regions
+        % Calculate bounding box for connected components
         propied=regionprops(L,'BoundingBox');
         hold on
         %% Plot Bounding Box
         for n=1:size(propied,1)
             rectangle('Position',propied(n).BoundingBox,'EdgeColor','g','LineWidth',2)
             s = regionprops(bw,'centroid');
+            % Concatenate structure array containing centroids into a single matrix
             centroids = cat(1,s.Centroid);
             hold on
             plot(centroids(:,1),centroids(:,2), 'b*')
