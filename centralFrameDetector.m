@@ -1,7 +1,8 @@
 % A questo punto io do per scontato di avere nella cartella person-i i suoi
 % relativi frame
-
-path = 'img/g001/person1';
+if(~exist(path, 'var'))
+    path = 'img/g001/person1';
+end
 
 %al solito, qui ci metto tutti i frame
 frame_names = dir(strcat(path,'/*.png'));

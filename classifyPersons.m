@@ -1,4 +1,7 @@
-path = '../img/g001'; %specifico il percorso
+if(~exist(path))
+    path = 'img/g001';
+end
+person_folder2 = '';
 frame_names = dir(strcat(path,'/*.png')); %salvo qui tutti i frame
 
 bg_frame = imread( strcat(path,'/frame00000.png') ); %assegno frame di backGround
@@ -16,6 +19,7 @@ max_interruption = 9;%Indica il max n. frame consecutivi per cui una persona non
 person_count = 0;
 same_person = false;
 empty_frames = 1;
+min_frames_per_person = 20;
 
 %assegna a frame_name un elemento di frame_names alla volta ciclando
 for frame_name = frame_names' 
@@ -64,6 +68,11 @@ for frame_name = frame_names'
             %altrimenti dopo 9 interruzioni, assumo che non ci sia nessauno
             %in scena e arriver? un cristiano
         else
+            frames_detected = max(size(dir(strcat(person_folder2,'*.png'))));
+            if (frames_detected < min_frames_per_person && same_person)
+                rmdir(person_folder2, 's');
+                person_count = person_count-1;
+            end
             same_person = false;
         end
     end
