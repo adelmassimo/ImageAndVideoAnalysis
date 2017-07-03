@@ -1,7 +1,7 @@
 % A questo punto io do per scontato di avere nella cartella person-i i suoi
 % relativi frame
 if(~exist(path, 'var'))
-    path = '../img/g001/person1';
+    path = '../img/g001/person2';
 end
 
 %al solito, qui ci metto tutti i frame

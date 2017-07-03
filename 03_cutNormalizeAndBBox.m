@@ -1,10 +1,9 @@
 path = '../img/g001/person2';
-frame_names = dir(strcat(path,'/*.png'));
+frame_names = dir(strcat(path,'/*rame*.png'));
 new_folder = '/Normalized';
 bg_frame = imread( strcat(path,'/background.png') ); %assegno frame di backGround
 
 mkdir(path, new_folder); 
-
 new_path = strcat(strcat(path, new_folder), '/');
 iteration = 0; %per distinguere il primo frame, che sar? semopre quello centrale.
 centroids_x = [];

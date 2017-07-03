@@ -39,7 +39,7 @@ In this way it's found the central frame:
 			-...
 			-personY
 
-### 01 Run "cutNormalizeAndBBoxx.m" for all perosn folders. 
+### 03 Run "cutNormalizeAndBBoxx.m" for all perosn folders. 
 It normalize all frames according with the central frame previously detected.
 In this way the dataset hierarchy become:
 
