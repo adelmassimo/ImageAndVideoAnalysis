@@ -10,7 +10,7 @@ for frame_name = frame_names'
     path_to_frame = strcat(frame_name.folder,'/', frame_name.name);
     frame = imread(path_to_frame);
     
-    if mod(i,5)==0
+    if mod(i,10)==0
         %ricavo la persona dal background e la filtro in modo da avere
         %una sagoma bianca del soggetto.
         person = imsubtract(bg_frame,frame);
@@ -29,8 +29,8 @@ for frame_name = frame_names'
         
         % Commentando queste 2 cose ho la figura con tutti i centroidi
         % calcolati!
-        %figure()
-        %imshow(bw);
+        figure()
+        imshow(bw);
         [L, Ne]=bwlabel(bw,8);
         %% Measure properties of image regions
         % Calculate bounding box for connected components
