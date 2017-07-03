@@ -1,6 +1,6 @@
-if(~exist(path))
-    path = 'img/g001';
-end
+
+path = '../img/g001';
+
 person_folder2 = '';
 frame_names = dir(strcat(path,'/*.png')); %salvo qui tutti i frame
 
@@ -49,6 +49,7 @@ for frame_name = frame_names'
             
             same_person = true;
             person_folder2 = strcat( strcat(path, person_folder), '/');
+            imwrite( bg_frame, strcat(person_folder2, 'background.png') );
         end
         
         imwrite( frame, strcat(person_folder2, frame_name.name) );
