@@ -2,7 +2,7 @@
 
 How to correctly run scripts:
 
-## 00 We assume that directory are disposed like:
+### 00 We assume that directory are disposed like:
 	mainDir:
 		- core (containing all scripts)
 		- img (containing the dataset) 
@@ -12,7 +12,7 @@ How to correctly run scripts:
 			-g023
 
 ### 01 Run "classifyPerson.m" for all folder. 
-##In this way the dataset hierarchy become:
+In this way the dataset hierarchy become:
 	- img (containing the dataset) 
 		-g001
 			-perosn1
@@ -25,7 +25,7 @@ How to correctly run scripts:
 			-personY
 
 ### 02 Run "centralFrameDetector.m" for all person folders. 
-##In this way it's found the central frame:
+In this way it's found the central frame:
 	- img (containing the dataset) 
 		-g001
 			-perosn1
@@ -36,10 +36,10 @@ How to correctly run scripts:
 			-perosn1
 			-...
 			-personY
-			
+
 ### 01 Run "cutNormalizeAndBBoxx.m" for all perosn folders. 
-##It normalize all frames according with the central frame previously detected.
-##In this way the dataset hierarchy become:
+It normalize all frames according with the central frame previously detected.
+In this way the dataset hierarchy become:
 	- img (containing the dataset) 
 		-g001
 			-perosn1
