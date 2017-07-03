@@ -13,6 +13,7 @@ How to correctly run scripts:
 
 ### 01 Run "classifyPerson.m" for all folder. 
 In this way the dataset hierarchy become:
+
 	- img (containing the dataset) 
 		-g001
 			-perosn1
@@ -26,6 +27,7 @@ In this way the dataset hierarchy become:
 
 ### 02 Run "centralFrameDetector.m" for all person folders. 
 In this way it's found the central frame:
+
 	- img (containing the dataset) 
 		-g001
 			-perosn1
@@ -40,6 +42,7 @@ In this way it's found the central frame:
 ### 01 Run "cutNormalizeAndBBoxx.m" for all perosn folders. 
 It normalize all frames according with the central frame previously detected.
 In this way the dataset hierarchy become:
+
 	- img (containing the dataset) 
 		-g001
 			-perosn1
