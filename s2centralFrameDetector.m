@@ -1,8 +1,9 @@
 % A questo punto io do per scontato di avere nella cartella person-i i suoi
 % relativi frame
 if(~exist(path, 'var'))
-    path = '../img/g001/person2';
+    path = '../img/g001/person8';
 end
+bg_frame = imread( strcat(path,'/background.png') ); %assegno frame di backGround
 
 %al solito, qui ci metto tutti i frame
 frame_names = dir(strcat(path,'/*.png'));

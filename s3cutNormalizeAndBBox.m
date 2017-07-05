@@ -1,4 +1,4 @@
-path = '../img/g001/person2';
+path = '../img/g001/person8';
 frame_names = dir(strcat(path,'/*rame*.png'));
 new_folder = '/Normalized';
 bg_frame = imread( strcat(path,'/background.png') ); %assegno frame di backGround
@@ -54,11 +54,10 @@ for frame_name = frame_names'
         % Calculate bounding box for connected components
         
         propied = regionprops(L,'BoundingBox');
-        hold on
         
         % Plot Bounding Box 
         for n = 1:size(propied,1)%da sistemare qui e siamo felici ciolo
-            rectangle('Position',propied(n).BoundingBox,'EdgeColor','g','LineWidth',2)
+            %rectangle('Position',propied(n).BoundingBox,'EdgeColor','g','LineWidth',2)
             s = regionprops(bw,'centroid');
             % Concatenate structure array containing centroids into a single matrix
             centroids_x = cat(1, centroids_x, s.Centroid(1));
@@ -90,7 +89,6 @@ for frame_name = frame_names'
         iteration = iteration + 1;
     end
 end
-hold off;
-plot(centroids_x, centroids_y)
-hold on;
-plot(centroids_x, centroids_y, 'x')
+fig = plot(centroids_x, centroids_y, 'lineWidth', 8)
+axis off
+saveas(fig,strcat(new_path,'trajectory.png'));
