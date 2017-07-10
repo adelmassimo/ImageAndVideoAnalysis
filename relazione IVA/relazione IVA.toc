@@ -1,2 +1,7 @@
 \contentsline {section}{\numberline {1}Introduzione}{2}
-\contentsline {section}{\numberline {2}Obiettivi}{2}
+\contentsline {section}{\numberline {2}Obiettivi}{3}
+\contentsline {section}{\numberline {3}Analisi}{4}
+\contentsline {subsection}{\numberline {3.1}OpenNI file reader}{4}
+\contentsline {subsection}{\numberline {3.2}Clasificare le Persone}{5}
+\contentsline {subsection}{\numberline {3.3}Central Frame Detection}{7}
+\contentsline {subsection}{\numberline {3.4}Normalizzare le Persone}{7}

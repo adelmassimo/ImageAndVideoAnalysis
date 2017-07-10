@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.11)  5 JUL 2017 02:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.11)  10 JUL 2017 12:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -104,91 +104,41 @@ Package graphics Info: Driver file: pdftex.def on input line 94.
 \Gin@req@height=\dimen107
 \Gin@req@width=\dimen108
 )
-(/usr/local/texlive/2015/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
-Package: algorithm2e 2013/01/06 v5.00 algorithms environments
-\c@AlgoLine=\count96
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/xspace.sty
-Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
-)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/relsize/relsize.sty
-Package: relsize 2013/03/29 ver 4.1
-)
-********************************************************
-Package `algorithm2e' Release 5.0 -- january 06 2013 --
-- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
-- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
-subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
-- Author: Christophe Fiorio (cfiorio@um2.fr)
-********************************************************
-\skiptotal=\skip43
-\skiplinenumber=\skip44
-\skiprule=\skip45
-\skiphlne=\skip46
-\skiptext=\skip47
-\skiplength=\skip48
-\algomargin=\skip49
-\skipalgocfslide=\skip50
-\algowidth=\dimen109
-\inoutsize=\dimen110
-\inoutindent=\dimen111
-\interspacetitleruled=\dimen112
-\interspacealgoruled=\dimen113
-\interspacetitleboxruled=\dimen114
-\algocf@inoutbox=\box28
-\algocf@inputbox=\box29
-\AlCapSkip=\skip51
-\AlCapHSkip=\skip52
-\algoskipindent=\skip53
-\algocf@nlbox=\box30
-\algocf@hangingbox=\box31
-\algocf@untilbox=\box32
-\algocf@skipuntil=\skip54
-\algocf@capbox=\box33
-\algoheightruledefault=\skip55
-\algoheightrule=\skip56
-\algotitleheightruledefault=\skip57
-\algotitleheightrule=\skip58
-\c@algocfline=\count97
-\c@algocfproc=\count98
-\c@algocf=\count99
-\algocf@algoframe=\box34
-\algocf@algobox=\box35
-) (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2014/09/06 1.5e listings language file
 )
-(./relazione IVA.aux)
+(./relazione IVA.aux
+
+LaTeX Warning: Label `oniReader' multiply defined.
+
+)
 \openout1 = `"relazione IVA.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-\c@lstlisting=\count100
-
-(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+\c@lstlisting=\count96
+ (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count101
-\scratchdimen=\dimen115
-\scratchbox=\box36
-\nofMPsegments=\count102
-\nofMParguments=\count103
+\scratchcounter=\count97
+\scratchdimen=\dimen109
+\scratchbox=\box28
+\nofMPsegments=\count98
+\nofMParguments=\count99
 \everyMPshowfont=\toks18
-\MPscratchCnt=\count104
-\MPscratchDim=\dimen116
-\MPnumerator=\count105
-\makeMPintoPDFobject=\count106
+\MPscratchCnt=\count100
+\MPscratchDim=\dimen110
+\MPnumerator=\count101
+\makeMPintoPDFobject=\count102
 \everyMPtoPDFconversion=\toks19
 ) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -238,64 +188,150 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-(./relazione IVA.toc)
+(./relazione IVA.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 4.
+)
 \tf@toc=\write3
 \openout3 = `"relazione IVA.toc"'.
+
+ (./relazione IVA.lol)
+\tf@lol=\write4
+\openout4 = `"relazione IVA.lol"'.
 
  [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 50.
+(Font)              <7> on input line 51.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 50.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 50.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 50.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 50.
+(Font)              <5> on input line 51.
 
-./relazione IVA.tex:50: Undefined control sequence.
+./relazione IVA.tex:51: Undefined control sequence.
 <argument> ...espaces Asus Xtion Pro Live | \href 
                                                   {https://www.asus.com/3D-S...
-l.50 ...e | \href{https://www.asus.com/3D-Sensor}}
+l.51 ...e | \href{https://www.asus.com/3D-Sensor}}
                                                   : le osservazioni di quest...
 
 ? 
-./relazione IVA.tex:50: Undefined control sequence.
+./relazione IVA.tex:51: Undefined control sequence.
 <argument> ...ità Politecnica delle Marche: \href 
                                                   {http://vrai.dii.univpm.it...
-l.50 ...{http://vrai.dii.univpm.it/re-id-dataset}}
+l.51 ...{http://vrai.dii.univpm.it/re-id-dataset}}
                                                   . In questo dataset sono p...
 
 ? 
-<immagini/img-01.png, id=11, 2890.8pt x 1354.3398pt>
-File: immagini/img-01.png Graphic file (type png)
- <use immagini/img-01.png>
-Package pdftex.def Info: immagini/img-01.png used on input line 55.
-(pdftex.def)             Requested size: 289.09694pt x 135.44191pt.
+<immagini/base-scheme.png, id=11, 515.9275pt x 321.2pt>
+File: immagini/base-scheme.png Graphic file (type png)
 
-<immagini/img-02.png, id=13, 2890.8pt x 1405.8924pt>
+<use immagini/base-scheme.png>
+Package pdftex.def Info: immagini/base-scheme.png used on input line 54.
+(pdftex.def)             Requested size: 386.94467pt x 240.89941pt.
+ [2 <./immagini/base-scheme.png>] [3]
+<immagini/img-02.png, id=26, 2890.8pt x 1405.8924pt>
 File: immagini/img-02.png Graphic file (type png)
  <use immagini/img-02.png>
-Package pdftex.def Info: immagini/img-02.png used on input line 59.
+Package pdftex.def Info: immagini/img-02.png used on input line 70.
 (pdftex.def)             Requested size: 289.09694pt x 140.59747pt.
 
-[2 <./immagini/img-01.png>] [3 <./immagini/img-02.png>] (./relazione IVA.aux) )
- 
+./relazione IVA.tex:75: Undefined control sequence.
+<argument> ...z@ \footnotesep \ignorespaces \href 
+                                                  {https://structure.io/open...
+l.75 ...tnote{\href{https://structure.io/openni}}}
+                                                  .
+? 
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 78.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+(./codes/readerONI-sample.py
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 1.
+ [4 <./immagini/img-02.png>])
+
+./relazione IVA.tex:80: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.80 \\È
+         importante sottolineare che i depth frame sono codificati in scala ...
+
+? 
+(./codes/classifyPerson-sample.m
+Overfull \hbox (68.32805pt too wide) in paragraph at lines 7--8
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (11.74434pt too wide) in paragraph at lines 8--10
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[5]
+Overfull \hbox (4.95387pt too wide) in paragraph at lines 33--34
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (21.92899pt too wide) in paragraph at lines 34--35
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (19.6655pt too wide) in paragraph at lines 44--45
+[][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (38.9041pt too wide) in paragraph at lines 47--48
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (4.95387pt too wide) in paragraph at lines 48--49
+[][][][][][][][][][][][][][][][] 
+ []
+
+) [6]
+
+! Package Listings Error: File `codes/centralFrameDetector-sample(.m)' not foun
+d.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: m)
+
+Enter file name: 
+
+! Package Listings Error: File `codes/normalizePerson-sample(.m)' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: m)
+
+Enter file name: 
+[7] (./relazione IVA.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4616 strings out of 493089
- 64717 string characters out of 6134842
- 164149 words of memory out of 5000000
- 8052 multiletter control sequences out of 15000+600000
- 14759 words of font info for 34 fonts, out of 8000000 for 9000
+ 3761 strings out of 493089
+ 50607 string characters out of 6134842
+ 134977 words of memory out of 5000000
+ 7190 multiletter control sequences out of 15000+600000
+ 16929 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,40p,622b,235s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/lo
+ 37i,8n,40p,622b,1762s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/lo
 cal/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/loca
 l/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/
 texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/te
@@ -303,11 +339,12 @@ xlive/2015/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texl
 ive/2015/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/
 2015/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on "relazione IVA.pdf" (3 pages, 800796 bytes).
+15/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on "relazione IVA.pdf" (7 pages, 693258 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 43 compressed objects within 1 object stream
+ 86 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
