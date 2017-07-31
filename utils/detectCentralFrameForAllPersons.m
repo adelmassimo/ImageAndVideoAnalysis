@@ -1,11 +1,13 @@
-for i = 1:23    
+for i = 12:22  
+    i
     if(i < 10)
-        path=strcat('../img/g00',num2str(i));
+        pathFolder=strcat('../img/g00',num2str(i),'/person*');
     else
-        path=strcat('../img/g0',num2str(i));
+        pathFolder=strcat('../img/g0',num2str(i),'/person*');
     end
     
-    for person = dir(path)'
-        person.name
+    for person = dir(pathFolder)'
+        path = strcat(person.folder,'/', person.name);
+        s2centralFrameDetector
     end
 end

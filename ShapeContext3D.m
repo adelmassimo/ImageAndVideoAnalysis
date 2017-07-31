@@ -1,6 +1,6 @@
 %% step 1 - Calcolo bordo
 tic
-frame = 'img/g001/person1/Normalized/Frame1.png';
+frame = '../img/g001/person1/Normalized/Frame1.png';
 frame = imread(frame);
 
 edge_points = edge(frame, 'Canny');
@@ -11,7 +11,7 @@ edge_points = edge(frame, 'Canny');
 %% step 2 - Calcolo istogramma SENZA CICLI (molto buono)
 
 X = repmat(xp, 1, length(xp));
-Y = repmat(yp, 1, length(xp));
+Y = repmat(yp, 1, length(xp)); %% non yp???
 
 %SENZA CICLI (molto buono)
 
@@ -24,7 +24,7 @@ treshold = 0.125;
 
 qD = zeros(length(xp),length(xp));
  
-while sum(sum(D < treshold/2))/(length(xp)^2) ~= 1 %il /2 ce l'ho messo perchè così mi entra anche quando tutti i numeri sono < dell'ultima soglia
+while sum(sum(D < treshold/2))/(length(xp)^2) ~= 1 %il /2 ce l'ho messo perch? cos? mi entra anche quando tutti i numeri sono < dell'ultima soglia
 
     mask = D < treshold;
     
@@ -40,7 +40,7 @@ logBins = max(max(qD));
 
 Angle = atand((X - X')./(Y - Y'));
 
-% aggiungo 180 gradi dove la differenza delle ascisse è minore di 0
+% aggiungo 180 gradi dove la differenza delle ascisse ? minore di 0
 
 addPi = ((Y - Y') < 0);
 addPi = 180*addPi;
@@ -75,14 +75,14 @@ for i = 1 : length(xp)
 end
 %% step 3 - Calcolo matrice dei costi
 
-% si mette questo, perchè in corrispondenza degli 0
-% ovuneque si guarda, l'immagine è sempre bianca
+% si mette questo, perch? in corrispondenza degli 0
+% ovuneque si guarda, l'immagine ? sempre bianca
 % Bisogna vedere se i valori non uguali a zero vanno
-% bene, ma chissà... Questo comunque si fa anche perchè
+% bene, ma chiss?... Questo comunque si fa anche perch?
 % per calcolare la matrice di costo, se a denominatore e
 % a numeratore ho 0, si ottiene NaN; in questo modo
-% invece male che vada si ottiene Inf, cioè per due
-% punti il costo è cosi alto che probabilmente quei due
+% invece male che vada si ottiene Inf, cio? per due
+% punti il costo ? cosi alto che probabilmente quei due
 % punti sono molto lontani.
 
 %P.S. in origine era 255 - hist..
@@ -92,7 +92,7 @@ end
 %Inf, che a noi ci avrebbe dato noia.. Allora facciamo il Max - hist e non
 %compare mai
 
-%DUBBIO: è giusto fare questa sottrazione scegliendo il max del max? oppure
+%DUBBIO: ? giusto fare questa sottrazione scegliendo il max del max? oppure
 %sarebbe meglio farla per ogni riga usando il max di quella riga?? boh.
 
 maximum = max(max(histMatrix));
@@ -105,6 +105,6 @@ for i = 1 : length(xp)
 end
 
 
-%Altro dubbio. Perchè creare una matrice di costo su pounti di una stessa
+%Altro dubbio. Perch? creare una matrice di costo su pounti di una stessa
 %immagine quando poidovremmo confrontare???
 toc

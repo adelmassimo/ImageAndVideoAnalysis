@@ -1,5 +1,5 @@
-path = '../img/g001/person8';
-frame_names = dir(strcat(path,'/*rame*.png'));
+path = '../img/g005/person1';
+frame_names = dir(strcat(path,'/c*rame*.png'));
 new_folder = '/Normalized';
 bg_frame = imread( strcat(path,'/background.png') ); %assegno frame di backGround
 
@@ -46,7 +46,7 @@ for frame_name = frame_names'
     bw(rows,cols) = filtered_person(rows, cols);
     
     
-    if mod(iteration,5) == 1 %ciolo ho messo ==1 cos? il central frame non me lo caga.
+    if mod(iteration,5) == 6 %ciolo ho messo ==1 cos? il central frame non me lo caga.
         [L, Ne] = bwlabel(bw,8);
         
         % Measure properties of image regions
@@ -89,6 +89,6 @@ for frame_name = frame_names'
         iteration = iteration + 1;
     end
 end
-fig = plot(centroids_x, centroids_y, 'lineWidth', 8)
-axis off
-saveas(fig,strcat(new_path,'trajectory.png'));
+%fig = plot(centroids_x, centroids_y, 'lineWidth', 8)
+%axis off
+%saveas(fig,strcat(new_path,'trajectory.png'));

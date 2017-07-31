@@ -1,5 +1,5 @@
 
-path = '../img/g001';
+%path = '../img/g001';
 
 person_folder2 = '';
 frame_names = dir(strcat(path,'/*.png')); %salvo qui tutti i frame

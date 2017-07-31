@@ -1,9 +1,10 @@
 % A questo punto io do per scontato di avere nella cartella person-i i suoi
 % relativi frame
-if(~exist(path, 'var'))
-    path = '../img/g001/person8';
+if(~exist('path', 'var'))
+    path = '../img/g002/person3';
+    error('manca il dio');
 end
-bg_frame = imread( strcat(path,'/background.png') ); %assegno frame di backGround
+bg_frame = imread( strcat(path,'/background.png')); %assegno frame di backGround
 
 %al solito, qui ci metto tutti i frame
 frame_names = dir(strcat(path,'/*.png'));
@@ -13,7 +14,7 @@ best_score = -inf;
 
 for frame_name = frame_names'
 %read the frames from path folder    
-    path_to_frame = strcat(frame_name.folder,'/', frame_name.name);
+    path_to_frame = strcat(frame_name.folder,'/', frame_name.name)
     frame = imread(path_to_frame);
     
     %sottraggo al backgroundd il frame --> In questo modo si invertono i
@@ -24,7 +25,7 @@ for frame_name = frame_names'
     %filtered = medfilt2( imcomplement(diff),[10 10]);
     
 %set window size
-    l1 = 35; l2 = 35;
+    l1 = 239; l2 = 10;
 
 %can we apply a tolerance... boh?
     %mask = filtered > 2^16-1000;
@@ -32,7 +33,7 @@ for frame_name = frame_names'
     
     %definisco una piccola area di dimensione 70x70 che va 215-275(in
     %larghezza) e 285-355 (in altezza)
-    center = diff(240-l1:240+l1, 320-l2:320+l2); 
+    center = medfilt2(diff(240-l1:240+l1, 320-l2:320+l2), [20 20]); 
 
 %sommo i pixel centrali
     score = sum(center(:));
@@ -40,6 +41,7 @@ for frame_name = frame_names'
     if( score > best_score )
         central_frame = frame;%.. e lo salvo in central frame
         best_score = score;
+        %imshow(imcomplement(center))
     end
     %imshow(center)
     %imshowpair(diff, center, 'montage')  
