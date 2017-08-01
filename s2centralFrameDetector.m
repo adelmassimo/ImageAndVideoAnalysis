@@ -14,7 +14,7 @@ best_score = -inf;
 
 for frame_name = frame_names'
 %read the frames from path folder    
-    path_to_frame = strcat(frame_name.folder,'/', frame_name.name)
+    path_to_frame = strcat(frame_name.folder,'/', frame_name.name);
     frame = imread(path_to_frame);
     
     %sottraggo al backgroundd il frame --> In questo modo si invertono i

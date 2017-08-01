@@ -1,9 +1,14 @@
-path = 'img/g001/person1';
-frame_names = dir(strcat(path,'/*.png'));
+if(~exist('path', 'var'))
+    path = '../img/g001/person6';
+    error('manca il dio');
+end
+frame_names = dir(strcat(path,'/*rame*.png'));
 new_folder = '/Normalized';
+bg_frame = imread('../img/g001/frame00000.png'); %assegno frame di backGround
+
 mkdir(path, new_folder); 
 new_path = strcat(strcat(path, new_folder), '/');
-iteration = 0; %per distinguere il primo frame, che sarà semopre quello centrale.
+iteration = 0; %per distinguere il primo frame, che sar? semopre quello centrale.
 centroids_x = [];
 centroids_y = [];
 
@@ -43,6 +48,7 @@ for frame_name = frame_names'
     bw = zeros(size(filtered_person));
     bw(rows,cols) = filtered_person(rows, cols);
     
+    
     s = regionprops(bw,'centroid');
     centroids_x = cat(1, centroids_x, s.Centroid(1));
     centroids_y = cat(1, centroids_y, s.Centroid(2));
@@ -69,27 +75,36 @@ for frame_name = frame_names'
         central_min = min(central_min);
         iteration = iteration + 1;
 
-        moving_points = [central_centroid_x,central_centroid_y; 85, 384; 576, 362];
+        %per traslazione
+        %moving_points = [centroids_x(length(centroids_x)),centroids_y(length(centroids_x)); 85, 384; 576, 362];
 
     elseif iteration > 15 && iteration < 125
-        new_frame = frame(floor(centroids_y(length(centroids_y)) - y_window/2) : ...
-            floor(centroids_y(length(centroids_y)) + y_window/2), ...
-            floor(centroids_x(length(centroids_y)) - x_window/2) : ...
-            floor(centroids_x(length(centroids_y)) + x_window/2));
+        new_frame = frame(                                                 ...
+            max(floor(centroids_y(length(centroids_y)) - y_window/2), 1) : ...
+            min(floor(centroids_y(length(centroids_y)) + y_window/2), 480),...
+            max(floor(centroids_x(length(centroids_y)) - x_window/2), 1) : ...
+            min(floor(centroids_x(length(centroids_y)) + x_window/2), 640) ...
+        );
         
         [i,j,frame_min] = find(new_frame);
         frame_min = min(frame_min);
         N = double(central_min)/double(frame_min);
         new_frame = N*new_frame;
         
-        fixed_points = [centroids_x(length(centroids_x)),centroids_y(length(centroids_x)); 85, 384; 576, 362];
+        %per traslazione
+        %fixed_points = [centroids_x(length(centroids_x)),centroids_y(length(centroids_x)); 85, 384; 576, 362];
         
-        T = cp2tform(moving_points,fixed_points,'affine');
+        %T = cp2tform(moving_points,fixed_points,'affine');
         
-        new_frame = imtransform(new_frame, T, 'nearest');
+        %new_frame = imtransform(new_frame, T, 'nearest');
 
-        
-        frame_id = strcat('Frame', num2str(iteration), '.png');
+        if(iteration < 10)
+            frame_id = strcat('Frame00', num2str(iteration), '.png');
+        elseif(iteration < 100)
+            frame_id = strcat('Frame0', num2str(iteration), '.png');
+        else
+            frame_id = strcat('Frame', num2str(iteration), '.png');
+        end
         imwrite(new_frame, strcat(new_path, frame_id));
         iteration = iteration + 1;
         

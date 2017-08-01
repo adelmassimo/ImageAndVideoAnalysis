@@ -1,6 +1,6 @@
-frame1 = imread('../img/g005/person1/Normalized/centralFrame.png');
-frame2 = imread('../img/g005/person6/Normalized/centralFrame.png');
-frame3 = imread('../img/g005/person5/Normalized/centralFrame.png');
+frame1 = imread('../img/g001/person3/Normalized/centralFrame.png');
+frame2 = imread('../img/g001/person7/Normalized/centralFrame.png');
+frame3 = imread('../img/g001/person5/Normalized/centralFrame.png');
 figure
 subplot(1,3,1)
 title('model')

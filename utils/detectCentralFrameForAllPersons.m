@@ -1,4 +1,4 @@
-for i = 12:22  
+for i = 2:22  
     i
     if(i < 10)
         pathFolder=strcat('../img/g00',num2str(i),'/person*');
@@ -8,6 +8,8 @@ for i = 12:22
     
     for person = dir(pathFolder)'
         path = strcat(person.folder,'/', person.name);
-        s2centralFrameDetector
+        %s2centralFrameDetector
+        %normalizeCutAndTranslate
+        LBPTop
     end
 end
