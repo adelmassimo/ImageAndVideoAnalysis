@@ -2,6 +2,7 @@ if(~exist('path', 'var'))
     path = '../img/g001/person6';
     error('manca il dio');
 end
+path = '../img/g001/person6';
 frame_names = dir(strcat(path,'/*rame*.png'));
 new_folder = '/Normalized';
 bg_frame = imread('../img/g001/frame00000.png'); %assegno frame di backGround
