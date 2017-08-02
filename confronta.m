@@ -10,7 +10,7 @@ for k = 1:1
     persons = dir(pathFolder)';
     num_persons = max(size((persons)));
     iteration = 1;
-    %scorro la prima metà delle persone (tanto poi sono i soliti che
+    %scorro la prima met? delle persone (tanto poi sono i soliti che
     %tornano indietro)
     for i = 1:num_persons/2
         best_score = inf; best = 0;
@@ -20,10 +20,11 @@ for k = 1:1
         XYP = imread(strcat(path, 'XYPlane.png'));
         XTP = imread(strcat(path, 'XTPlane.png'));
         YTP = imread(strcat(path, 'YTPlane.png'));
-        
-        lbpXY = extractLBPFeatures(XYP,'Upright',true, 'NumNeighbors', 8, 'Radius', 1);
-        lbpXT = extractLBPFeatures(XTP,'Upright',true, 'NumNeighbors', 8, 'Radius', 1);
-        lbpYT = extractLBPFeatures(YTP,'Upright',true, 'NumNeighbors', 8, 'Radius', 1);
+
+        lbpXY = extractLBPFeatures(XYP,'Upright', false, 'NumNeighbors', 16, 'Radius', 4);
+        lbpXT = extractLBPFeatures(XTP,'Upright', false, 'NumNeighbors', 16, 'Radius', 4);
+        lbpYT = extractLBPFeatures(YTP,'Upright', false, 'NumNeighbors', 16, 'Radius', 4);
+
 
         for j = num_persons/2+1:num_persons
 
@@ -32,9 +33,11 @@ for k = 1:1
             XYP2 = imread(strcat(path, 'XYPlane.png'));
             XTP2 = imread(strcat(path, 'XTPlane.png'));
             YTP2 = imread(strcat(path, 'YTPlane.png'));
-            lbpXY2 = extractLBPFeatures(XYP2,'Upright',true, 'NumNeighbors', 8, 'Radius', 1);
-            lbpXT2 = extractLBPFeatures(XTP2,'Upright',true, 'NumNeighbors', 8, 'Radius', 1);
-            lbpYT2 = extractLBPFeatures(YTP2,'Upright',true, 'NumNeighbors', 8, 'Radius', 1);
+
+            lbpXY2 = extractLBPFeatures(XYP2,'Upright', false, 'NumNeighbors', 16, 'Radius', 4);
+            lbpXT2 = extractLBPFeatures(XTP2,'Upright', false, 'NumNeighbors', 16, 'Radius', 4);
+            lbpYT2 = extractLBPFeatures(YTP2,'Upright', false, 'NumNeighbors', 16, 'Radius', 4);
+
 
             w1 = 15; w2 = 10; w3 = 1;
             meanD = mean(w1*(lbpXY-lbpXY2).^2 + w2*(lbpXT-lbpXT2).^2 + w3*(lbpYT-lbpYT2).^2);

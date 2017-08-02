@@ -1,4 +1,4 @@
-for i = 2:22  
+for i = 4:4
     i
     if(i < 10)
         pathFolder=strcat('../img/g00',num2str(i),'/person*');
