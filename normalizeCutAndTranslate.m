@@ -1,16 +1,10 @@
-if(~exist('path', 'var'))
-    path = '../img/g001/person6';
-    error('manca il dio');
-end
-path = '../img/g001/person6';
-frame_names = dir(strcat(path,'/*rame*.png'));
+path = 'img/g003/person4';
+frame_names = dir(strcat(path,'/*.png'));
 new_folder = '/Normalized';
-bg_frame = imread('../img/g001/frame00000.png'); %assegno frame di backGround
-
 mkdir(path, new_folder); 
 new_path = strcat(strcat(path, new_folder), '/');
-iteration = 0; %per distinguere il primo frame, che sar? semopre quello centrale.
-centroids_x = [];
+iteration = 0; %per distinguere il primo frame, che sarà semopre quello centrale.
+centroids_x = []; % forse non è necessario salvare qui i centroidi!! Anzi ne sono quasi sicuro
 centroids_y = [];
 
 for frame_name = frame_names'
@@ -79,13 +73,15 @@ for frame_name = frame_names'
         %per traslazione
         %moving_points = [centroids_x(length(centroids_x)),centroids_y(length(centroids_x)); 85, 384; 576, 362];
 
-    elseif iteration > 15 && iteration < 125
-        new_frame = frame(                                                 ...
-            max(floor(centroids_y(length(centroids_y)) - y_window/2), 1) : ...
-            min(floor(centroids_y(length(centroids_y)) + y_window/2), 480),...
-            max(floor(centroids_x(length(centroids_y)) - x_window/2), 1) : ...
-            min(floor(centroids_x(length(centroids_y)) + x_window/2), 640) ...
-        );
+        %con questo controllo, le persone alte e che fanno passi più lunghi
+        %vedranno salvato un minor numero di frame
+    elseif  floor(centroids_x(length(centroids_y)) - x_window/2) > 35 && ...
+                floor(centroids_x(length(centroids_y)) + x_window/2) <= 630 
+        new_frame = frame(floor(centroids_y(length(centroids_y)) - y_window/2) : ...
+            floor(centroids_y(length(centroids_y)) + y_window/2), ...
+            floor(centroids_x(length(centroids_y)) - x_window/2) : ...
+            floor(centroids_x(length(centroids_y)) + x_window/2));
+        
         
         [i,j,frame_min] = find(new_frame);
         frame_min = min(frame_min);
@@ -99,17 +95,10 @@ for frame_name = frame_names'
         
         %new_frame = imtransform(new_frame, T, 'nearest');
 
-        if(iteration < 10)
-            frame_id = strcat('Frame00', num2str(iteration), '.png');
-        elseif(iteration < 100)
-            frame_id = strcat('Frame0', num2str(iteration), '.png');
-        else
-            frame_id = strcat('Frame', num2str(iteration), '.png');
-        end
+        
+        frame_id = strcat('Frame', num2str(iteration), '.png');
         imwrite(new_frame, strcat(new_path, frame_id));
         iteration = iteration + 1;
         
-    else
-        iteration = iteration + 1;
     end
 end
