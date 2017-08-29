@@ -1,13 +1,13 @@
-path = 'img/g003/person4/Normalized';
-frame_names = dir(strcat(path,'/*.png'));
+path_normalized = strcat(path_person, '/Normalized');
+frame_names = dir(strcat(path_normalized,'/*.png'));
 new_folder = '/Planes';
-mkdir(path, new_folder); 
-new_path = strcat(strcat(path, new_folder), '/');
+mkdir(path_normalized, new_folder); 
+new_path = strcat(strcat(path_normalized, new_folder), '/');
 iteration = 1; %per distinguere il primo frame, che sar? sempre quello centrale.
 
 central_frame_x = x_window/2 + 1;
 central_frame_y = y_window/2 + 1;
-central_frame = imread(strcat(path, '/centralFrame.png'));
+central_frame = imread(strcat(path_normalized, '/centralFrame.png'));
 
 %estrazione piani relativi ai frame di una persona
 XTPlanes = uint16(ones(max(size(central_frame(:,1))), length(frame_names)));
@@ -27,4 +27,4 @@ end
 
 imwrite(XTPlanes, strcat(new_path, 'XTPlane.png'));
 imwrite(YTPlanes, strcat(new_path, 'YTPlane.png'));
-imwrite(imread(strcat(path,'/centralFrame.png')), strcat(new_path, 'XYPlane.png'));
+imwrite(imread(strcat(path_normalized,'/centralFrame.png')), strcat(new_path, 'XYPlane.png'));
