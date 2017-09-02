@@ -1,11 +1,19 @@
 clear couple;
 w1 = 10; w2 = 5; w3 = 1;
 for k = 1:1    
+<<<<<<< Updated upstream
     k=3;
+=======
+<<<<<<< HEAD
+    k = 1;
+=======
+    k=3;
+>>>>>>> origin/master
+>>>>>>> Stashed changes
     if(k < 10)
-        pathFolder=strcat('img/g00',num2str(k),'/person*');
+        pathFolder=strcat('../img/g00',num2str(k),'/person*');
     else
-        pathFolder=strcat('img/g0',num2str(k),'/person*');
+        pathFolder=strcat('../img/g0',num2str(k),'/person*');
     end
     
     persons = dir(pathFolder)';

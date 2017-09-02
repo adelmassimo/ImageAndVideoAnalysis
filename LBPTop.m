@@ -1,5 +1,15 @@
+<<<<<<< Updated upstream
 path_normalized = strcat(path_person, '/Normalized');
 frame_names = dir(strcat(path_normalized,'/*.png'));
+=======
+<<<<<<< HEAD
+path = '../img/g002/person4/Normalized';
+frame_names = dir(strcat(path,'/*.png'));
+=======
+path_normalized = strcat(path_person, '/Normalized');
+frame_names = dir(strcat(path_normalized,'/*.png'));
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 new_folder = '/Planes';
 mkdir(path_normalized, new_folder); 
 new_path = strcat(strcat(path_normalized, new_folder), '/');
