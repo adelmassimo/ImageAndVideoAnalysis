@@ -1,5 +1,5 @@
 tic
-for video_num = 1 : 1
+for video_num = 14 : 18
     if(video_num < 10)
         path=strcat('img/g00',num2str(video_num));
     else
@@ -53,7 +53,11 @@ for video_num = 1 : 1
                 person_count = person_count + 1;
                 
                 %se ho trovato una persona diversa aggiungo la cartella
-                person_folder = strcat('/person', num2str(person_count));
+                if person_count < 10
+                    person_folder = strcat('/person0', num2str(person_count));
+                else
+                    person_folder = strcat('/person', num2str(person_count));
+                end
                 mkdir(path, person_folder);
                 
                 same_person = true;
@@ -83,12 +87,16 @@ for video_num = 1 : 1
             end
         end
     end
-%     
+     
     pathFolder = strcat(path, '/person*');
     persons = dir(pathFolder)';
     num_persons = max(size((persons)));
-    for person_num = 1 : num_persons
-        path_person = strcat(path, '/person', num2str(person_num));
+    for person_num = 1 : num_persons %-1 solo per video7
+        if person_num < 10
+            path_person = strcat(path, '/person0', num2str(person_num));
+        else
+            path_person = strcat(path, '/person', num2str(person_num));
+        end
         centralFrameDetector;
         normalizeCutAndTranslate;
         LBPTop;

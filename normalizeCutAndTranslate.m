@@ -16,7 +16,7 @@ for frame_name = frame_names'
         %ricavo la persona dal background e la filtro in modo da avere
         %una sagoma bianca del soggetto.
         person = imsubtract(bg_frame,frame);
-        filtered_person = (person > 18150);
+        filtered_person = (person > 13000); %più è alto e più sono precisi i centroidi, ma si vengono a creare vari problemi
         filtered_person = medfilt2(filtered_person, [10 10]);
         
         %essendoci del rumore, a volte avremo alcune aree bianche che
@@ -77,14 +77,12 @@ for frame_name = frame_names'
             %moving_points = [centroids_x(length(centroids_x)),centroids_y(length(centroids_x)); 85, 384; 576, 362];
             
             %con questo controllo, le persone alte e che fanno passi più lunghi
-            %vedranno salvato un minor numero di frame
+            %vedranno salvato un minor numero di frame MI SA CHE HO
+            %SBAGLIATO: credo basti mettere il centroide maggiore.
         elseif  floor(centroids_x(length(centroids_y)) - x_window/2) > x_window/2 && ...
                 floor(centroids_x(length(centroids_y)) + x_window/2) <= (max(size(frame)) - x_window/2) ...
-                && floor(centroids_y(length(centroids_y)) - y_window/2) > y_window/2 ...
-                && floor(centroids_y(length(centroids_y)) + y_window/2) <= (min(size(frame)) - y_window/2) ...
-                % TO DO: notare che appena uno smette di essere preso a dx tutti quelli
-            % dopo non sono presi ed è inutile fare i calcoli, trovare un modo per
-            % eliminare questi calcoli inutili.
+                %&& floor(centroids_y(length(centroids_y)) - y_window/2) > y_window/2 ...
+                %&& floor(centroids_y(length(centroids_y)) + y_window/2) <= (min(size(frame)) - y_window/2) ...
             
             new_frame = frame(floor(centroids_y(length(centroids_y)) - y_window/2) : ...
                 floor(centroids_y(length(centroids_y)) + y_window/2), ...
@@ -94,26 +92,21 @@ for frame_name = frame_names'
             
             [i,j,frame_min] = find(new_frame);
             frame_min = min(frame_min);
+            if frame_min == 0
+                frame_min = 1;
+            end
             N = double(central_min)/double(frame_min);
             new_frame = N*new_frame;
-            
-            %per traslazione
-            %fixed_points = [centroids_x(length(centroids_x)),centroids_y(length(centroids_x)); 85, 384; 576, 362];
-            
-            %T = cp2tform(moving_points,fixed_points,'affine');
-            
-            %new_frame = imtransform(new_frame, T, 'nearest');
-            
-            %USARE, CERCA INTERNET, FUNZIONI CHE ATTRAVERSO PARAMETRI DI
-            %CALIBRAZIONE STANDARD, MAPPANO LE COORDINATE XY DEL FRAME DI
-            %PROFONDITA IN COORDINATE XYZ (KINEKT, XTION PRO)
-            
             
             frame_id = strcat('Frame', num2str(iteration), '.png');
             imwrite(new_frame, strcat(new_path, frame_id));
             
             iteration = iteration + 1;
-        elseif floor(centroids_x(length(centroids_y)) + x_window/2) > (max(size(frame)) - x_window/2)
+        elseif floor(centroids_x(length(centroids_y)) + x_window/2) > (max(size(frame)) - x_window/2)...
+                && person_num <= num_persons/2
+            finish = true;
+        elseif floor(centroids_x(length(centroids_y)) - x_window/2) <= x_window/2 ...
+                && person_num > num_persons/2
             finish = true;
         end
     end
