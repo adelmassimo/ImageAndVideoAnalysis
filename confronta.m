@@ -1,15 +1,7 @@
 clear couple;
 w1 = 10; w2 = 5; w3 = 1;
-for k = 1:1    
-<<<<<<< Updated upstream
-    k=3;
-=======
-<<<<<<< HEAD
+for k = 1:1 
     k = 1;
-=======
-    k=3;
->>>>>>> origin/master
->>>>>>> Stashed changes
     if(k < 10)
         pathFolder=strcat('../img/g00',num2str(k),'/person*');
     else
@@ -19,7 +11,7 @@ for k = 1:1
     persons = dir(pathFolder)';
     num_persons = max(size((persons)));
     iteration = 1;
-    %scorro la prima metà delle persone (tanto poi sono i soliti che
+    %scorro la prima met? delle persone (tanto poi sono i soliti che
     %tornano indietro)
     for i = 1:num_persons/2
         best_score = inf; best = 0;

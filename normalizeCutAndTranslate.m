@@ -2,8 +2,8 @@ frame_names = dir(strcat(path_person,'/*.png'));
 new_folder = '/Normalized';
 mkdir(path_person, new_folder);
 new_path = strcat(strcat(path_person, new_folder), '/');
-iteration = 0; %per distinguere il primo frame, che sarà semopre quello centrale.
-centroids_x = []; % forse non è necessario salvare qui i centroidi!! Anzi ne sono quasi sicuro
+iteration = 0; %per distinguere il primo frame, che sar? semopre quello centrale.
+centroids_x = []; % forse non ? necessario salvare qui i centroidi!! Anzi ne sono quasi sicuro
 centroids_y = [];
 finish = false;
 for frame_name = frame_names'
@@ -16,7 +16,7 @@ for frame_name = frame_names'
         %ricavo la persona dal background e la filtro in modo da avere
         %una sagoma bianca del soggetto.
         person = imsubtract(bg_frame,frame);
-        filtered_person = (person > 13000); %più è alto e più sono precisi i centroidi, ma si vengono a creare vari problemi
+        filtered_person = (person > 13000); %pi? ? alto e pi? sono precisi i centroidi, ma si vengono a creare vari problemi
         filtered_person = medfilt2(filtered_person, [10 10]);
         
         %essendoci del rumore, a volte avremo alcune aree bianche che
@@ -76,7 +76,7 @@ for frame_name = frame_names'
             %per traslazione
             %moving_points = [centroids_x(length(centroids_x)),centroids_y(length(centroids_x)); 85, 384; 576, 362];
             
-            %con questo controllo, le persone alte e che fanno passi più lunghi
+            %con questo controllo, le persone alte e che fanno passi pi? lunghi
             %vedranno salvato un minor numero di frame MI SA CHE HO
             %SBAGLIATO: credo basti mettere il centroide maggiore.
         elseif  floor(centroids_x(length(centroids_y)) - x_window/2) > x_window/2 && ...

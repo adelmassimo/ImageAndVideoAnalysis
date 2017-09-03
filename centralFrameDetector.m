@@ -15,7 +15,7 @@ for frame_name = frame_names'
     frame = imread(path_to_frame);
     
     %sottraggo al backgroundd il frame --> In questo modo si invertono i
-    %colori: a colore scuro corrisponde maggiore profondità
+    %colori: a colore scuro corrisponde maggiore profondit?
     diff =  imsubtract(bg_frame,frame);
     
 %maybe we want to apply a filter to reduce noise... boh
@@ -44,6 +44,6 @@ for frame_name = frame_names'
 end
 
 imwrite( central_frame, strcat(path_person, '/centralFrame.png'));%a questo punto salvo il frame(originale e non 
-%in negativo) che aveva la somma di pixel maggiore nella finestra (che però
-%usava il frame in negativo: è per questo che uso il maggiore nel controllo
+%in negativo) che aveva la somma di pixel maggiore nella finestra (che per?
+%usava il frame in negativo: ? per questo che uso il maggiore nel controllo
 %dell'if
