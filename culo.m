@@ -20,7 +20,6 @@ for video_num = 2:10
         
         [x, y] = getCentroid(frame);
 
-        imshow( frame )
         hold on
         scatter(y, x, 'MarkerFaceColor',[0 .7 .7]);
         
