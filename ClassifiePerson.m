@@ -24,7 +24,7 @@ control_matrix = [
 22 6
 ];
 mymatrix = zeros(22,2);
-for video_num = 1:22
+for video_num = 15
     if(video_num < 10)
         path=strcat('../img/g00',num2str(video_num));
     else

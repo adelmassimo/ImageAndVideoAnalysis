@@ -8,8 +8,9 @@ for i = 1:22
     
     for person = dir(pathFolder)'
         path_person = strcat(person.folder,'/', person.name);
+        ClassifiePerson
         %centralFrameDetector
-        normalizeCutAndTranslate
+        %normalizeCutAndTranslate
         %LBPTop
     end
 end
