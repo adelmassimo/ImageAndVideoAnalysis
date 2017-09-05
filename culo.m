@@ -1,10 +1,10 @@
 
-for video_num = 2:10
+for video_num = 1:10
     
     if(video_num < 10)
-        path=strcat('../img/g015/person0',num2str(video_num));
+        path=strcat('../img/g001/person0',num2str(video_num));
     else
-        path=strcat('../img/g015/person',num2str(video_num));
+        path=strcat('../img/g001/person',num2str(video_num));
     end
     frame_names = dir(strcat(path,'/*.png')); %salvo qui tutti i frame
     
@@ -19,7 +19,8 @@ for video_num = 2:10
         frame = imread(path_to_frame);
         
         [x, y] = getCentroid(frame);
-
+        
+        imshow(frame)
         hold on
         scatter(y, x, 'MarkerFaceColor',[0 .7 .7]);
         
