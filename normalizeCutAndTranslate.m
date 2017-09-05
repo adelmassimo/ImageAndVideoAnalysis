@@ -2,8 +2,8 @@ frame_names = dir(strcat(path_person,'/*.png'));
 new_folder = '/Normalized';
 mkdir(path_person, new_folder);
 new_path = strcat(strcat(path_person, new_folder), '/');
-iteration = 0; %per distinguere il primo frame, che sar? semopre quello centrale.
-centroids_x = []; % forse non ? necessario salvare qui i centroidi!! Anzi ne sono quasi sicuro
+iteration = 0; %per distinguere il primo frame, che sarà semopre quello centrale.
+centroids_x = []; % forse non è necessario salvare qui i centroidi!! Anzi ne sono quasi sicuro
 centroids_y = [];
 finish = false;
 for frame_name = frame_names'
@@ -16,9 +16,9 @@ for frame_name = frame_names'
         %ricavo la persona dal background e la filtro in modo da avere
         %una sagoma bianca del soggetto.
         person = imsubtract(bg_frame,frame);
-        filtered_person = (person > 13000); %pi? ? alto e pi? sono precisi i centroidi, ma si vengono a creare vari problemi
+        filtered_person = (person > 13000); %più è alto e più sono precisi i centroidi, ma si vengono a creare vari problemi
         filtered_person = medfilt2(filtered_person, [10 10]);
-        
+%         
         %essendoci del rumore, a volte avremo alcune aree bianche che
         %potrebbero dare problemi nel calcolo del rettangolo massimo che
         %vogliamo usare. Allora, calcolo le regioni connesse dell'immagine, per
@@ -41,13 +41,17 @@ for frame_name = frame_names'
         % era la regione contrassegnata da un numero diverso da 1, ma io in bw
         % voglio solo 1 e 0.
         
-        bw = zeros(size(filtered_person));
-        bw(rows,cols) = filtered_person(rows, cols);
+%         bw = zeros(size(filtered_person));
+%         bw(rows,cols) = filtered_person(rows, cols);
+%         
+%         
+%         s = regionprops(bw,'centroid');
+
+        [cY, cX] = getCentroid(frame);
         
-        
-        s = regionprops(bw,'centroid');
-        centroids_x = cat(1, centroids_x, s.Centroid(1));
-        centroids_y = cat(1, centroids_y, s.Centroid(2));
+        %salvarli tutti forse non serve a nulla???
+        centroids_x = cat(1, centroids_x, cX);
+        centroids_y = cat(1, centroids_y, cY);
         
         
         
@@ -64,44 +68,40 @@ for frame_name = frame_names'
             
             new_frame = frame(floor(centroids_y(length(centroids_y)) - y_window/2) : ...
                 floor(centroids_y(length(centroids_y)) + y_window/2), ...
-                floor(centroids_x(length(centroids_y)) - x_window/2) : ...
+                floor(centroids_x(length(centroids_y)) - floor(x_window/2)) : ...
                 floor(centroids_x(length(centroids_y)) + x_window/2));
             frame_id = 'centralFrame.png';
             
             imwrite( new_frame, strcat(new_path, frame_id));
-            [i,j,central_min] = find(new_frame);
-            central_min = min(central_min);
+            central_min = frame(cY, cX);
             iteration = iteration + 1;
             
-            %per traslazione
-            %moving_points = [centroids_x(length(centroids_x)),centroids_y(length(centroids_x)); 85, 384; 576, 362];
-            
-            %con questo controllo, le persone alte e che fanno passi pi? lunghi
-            %vedranno salvato un minor numero di frame MI SA CHE HO
-            %SBAGLIATO: credo basti mettere il centroide maggiore.
-        elseif  floor(centroids_x(length(centroids_y)) - x_window/2) > x_window/2 && ...
-                floor(centroids_x(length(centroids_y)) + x_window/2) <= (max(size(frame)) - x_window/2) ...
-                %&& floor(centroids_y(length(centroids_y)) - y_window/2) > y_window/2 ...
-                %&& floor(centroids_y(length(centroids_y)) + y_window/2) <= (min(size(frame)) - y_window/2) ...
-            
+            %forse non zerve il -+ x_window/2
+        elseif  floor(centroids_x(length(centroids_y))) > floor(x_window/2) && ...
+                floor(centroids_x(length(centroids_y))) <= floor((max(size(frame)) - x_window/2))
+                
             new_frame = frame(floor(centroids_y(length(centroids_y)) - y_window/2) : ...
                 floor(centroids_y(length(centroids_y)) + y_window/2), ...
-                floor(centroids_x(length(centroids_y)) - x_window/2) : ...
+                floor(centroids_x(length(centroids_y)) - floor(x_window/2)) : ...
                 floor(centroids_x(length(centroids_y)) + x_window/2));
             
             
-            [i,j,frame_min] = find(new_frame);
-            frame_min = min(frame_min);
-            if frame_min == 0
-                frame_min = 1;
-            end
+            %[i,j,frame_min] = find(new_frame);
+            frame_min = frame(cY, cX);
+            
             N = double(central_min)/double(frame_min);
             new_frame = N*new_frame;
+            if iteration < 10 
+                frame_id = strcat('frame00', num2str(iteration), '.png');
+            elseif iteration < 100
+                frame_id = strcat('frame0', num2str(iteration), '.png');
+            else
+                frame_id = strcat('frame', num2str(iteration), '.png');
+            end
             
-            frame_id = strcat('Frame', num2str(iteration), '.png');
-            imwrite(new_frame, strcat(new_path, frame_id));
-            
+            imwrite(new_frame, strcat(new_path, frame_id)); 
             iteration = iteration + 1;
+                 
         elseif floor(centroids_x(length(centroids_y)) + x_window/2) > (max(size(frame)) - x_window/2)...
                 && person_num <= num_persons/2
             finish = true;

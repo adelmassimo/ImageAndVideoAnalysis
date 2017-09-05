@@ -1,22 +1,12 @@
-<<<<<<< Updated upstream
 path_normalized = strcat(path_person, '/Normalized');
-frame_names = dir(strcat(path_normalized,'/*.png'));
-=======
-<<<<<<< HEAD
-path = '../img/g002/person4/Normalized';
-frame_names = dir(strcat(path,'/*.png'));
-=======
-path_normalized = strcat(path_person, '/Normalized');
-frame_names = dir(strcat(path_normalized,'/*.png'));
->>>>>>> origin/master
->>>>>>> Stashed changes
+frame_names = dir(strcat(path_normalized,'/F*.png'));
 new_folder = '/Planes';
 mkdir(path_normalized, new_folder); 
 new_path = strcat(strcat(path_normalized, new_folder), '/');
 iteration = 1; %per distinguere il primo frame, che sar? sempre quello centrale.
 
-central_frame_x = x_window/2 + 1;
-central_frame_y = y_window/2 + 1;
+central_frame_x = x_window/2;
+central_frame_y = y_window/2;
 central_frame = imread(strcat(path_normalized, '/centralFrame.png'));
 
 %estrazione piani relativi ai frame di una persona
