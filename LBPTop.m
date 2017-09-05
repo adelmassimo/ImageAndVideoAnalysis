@@ -1,5 +1,5 @@
 path_normalized = strcat(path_person, '/Normalized');
-frame_names = dir(strcat(path_normalized,'/F*.png'));
+frame_names = dir(strcat(path_normalized,'/f*.png'));
 new_folder = '/Planes';
 mkdir(path_normalized, new_folder); 
 new_path = strcat(strcat(path_normalized, new_folder), '/');

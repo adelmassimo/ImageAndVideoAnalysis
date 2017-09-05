@@ -1,5 +1,5 @@
 tic
-for video_num = 19 : 22
+for video_num = 22 : 22
     if(video_num < 10)
         path=strcat('img/g00',num2str(video_num));
     else

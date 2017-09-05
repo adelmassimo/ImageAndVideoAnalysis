@@ -10,7 +10,7 @@ function [x, y] = getCentroid(frame)
     frame_n = imcomplement( frame(padding_t:480-padding_b, padding_l:640-padding_r) );
     
     %da qui a...
-    R = 10;
+    R = 20;
     frame_n = imopen(frame_n, strel('disk', R));
     frame_n = imclose(frame_n, strel('disk', R));
     %... qui ? un alternativa a medfilt2(...[20 20])
