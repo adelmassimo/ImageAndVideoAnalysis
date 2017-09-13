@@ -1,6 +1,5 @@
 path_normalized = strcat(path_person, '/Normalized');
 frame_names = dir(strcat(path_normalized,'/f*.png'));
-
  
 if video_num < 10
     if person_num < 10
