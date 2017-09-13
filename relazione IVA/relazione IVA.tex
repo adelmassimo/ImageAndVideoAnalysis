@@ -48,7 +48,7 @@ X agosto 2017
 Un importante compito per sistemi muti-camera distribuiti è il riconoscimento di un individuo in scene diverse, a tempi diversi: questo è noto come problema di \emph{Person Re-identification}.\\
 La Person Re-identification è un'importante disciplina di settori come \emph{Human Computer Interaction},  \emph{Screen Monitoring}, \emph{Ambient Assisted Living} e molti altri rami di ricerca della \emph{Computer Vision}.
 Si possono avere casi d'uso \emph{Online} o \emph{Offline}: nel primo caso l'analisi sul soggetto è immediata; mentre nel secondo caso si analizza la scena in differita (spesso avendo a disposizione una quantità di informazioni maggiore).\\
-Nel caso studiato il contesto è quello di un sistema offline, basato su un sistema di \emph{depht cameras}\footnote{Asus Xtion Pro Live | \href{https://www.asus.com/3D-Sensor}}: le osservazioni di questo sistema vanno a comporre il dataset \emph{TVPR}\footnote{Università Politecnica delle Marche: \href{http://vrai.dii.univpm.it/re-id-dataset}}. In questo dataset sono presenti 23 video, ognuno nel formato 640x480, a un frame rate prossimo a 30fps, e disponibile in formato non compresso (\emph{.ONI}); in questi video compaiono 100 persone nel loro normale modo di fare quotidiano.
+Nella fattispecie del contesto studiato si parla di re-identification offline, basato su un sistema di \emph{depht cameras}\footnote{Asus Xtion Pro Live | \href{https://www.asus.com/3D-Sensor}}: le osservazioni di questo sistema vanno a comporre il dataset \emph{TVPR}\footnote{Università Politecnica delle Marche: \href{http://vrai.dii.univpm.it/re-id-dataset}}. In questo dataset sono presenti 23 video, ognuno nel formato 640x480, a un frame rate prossimo a 30fps, e disponibile in formato non compresso (\emph{.ONI}); in questi video compaiono 100 persone nel loro normale modo di fare quotidiano.
 \begin{figure}
 \centering
 \includegraphics[scale=0.75]{immagini/base-scheme.png}
@@ -62,7 +62,8 @@ La metrica per determinare la similarità tra due persone sarà scelta a piacere t
 \newpage
 
 \section{Analisi}        %----------------------- Analisi -------------------------------------------------------------------------------
-In questa sezione il tema affrontato sarà la trattazione dei dati a disposizione: l'elaborazione di questi e la definizione dei modelli a cui sarà applicata la strategia risolutiva.
+In questa sezione il tema affrontato sarà la trattazione dei dati a disposizione: l'elaborazione di questi e la definizione dei modelli a cui sarà applicata la strategia risolutiva.\\
+In virtù di sistema offline è possibile un ampia manipolazione dei dati, in modo tale da renderli più facili da analizzare: infatti in contesti online la velocità dell'algoritmo è un elemento cruciale e non vi è il tempo materiale per applicare delle semplificazioni importanti.
 
 \subsection{OpenNI file reader} %----------------------- ONI ----------------------------
 \begin{figure}
@@ -82,6 +83,7 @@ Grazie a queste è possibile scrivere il codice, riportato in \lstlistingname \re
  
  
 \subsection{Clasificare le Persone} %----------------------- Classify ----------------------------
+Per quanto riguarda la classificazione delle persone, la strategia adottata è piuttosto semplice
 \lstinputlisting[caption = Oni to PNG converter, label = oniReader]{codes/classifyPerson-sample.m}
 
 \subsection{Central Frame Detection} %----------------------- Central ----------------------------

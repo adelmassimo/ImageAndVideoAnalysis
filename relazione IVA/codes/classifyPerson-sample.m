@@ -1,55 +1,42 @@
-
-path = '../img/g001';
-
-person_folder2 = '';
-frame_names = dir(strcat(path,'/*.png')); %salvo qui tutti i frame
-
-bg_frame = imread( strcat(path,'/frame00000.png') ); %assegno frame di backGround
-bg_sum = sum(bg_frame(:));%sommo tutti i valori dei pixel di background
-
-bound = bg_sum * 0.99;  
-max_interruption = 9;
-person_count = 0;
-same_person = false;
-empty_frames = 1;
-min_frames_per_person = 20;
-
-for frame_name = frame_names' 
-    path_to_frame = strcat(frame_name.folder,'/', frame_name.name);
-    frame = imread(path_to_frame); 
+mymatrix = zeros(22,2);
+for video_num = 1:22
     
-    frame_sum = sum(frame(:));
-    if(frame_sum < bound)
-        empty_frames = 0;
+    path=strcat('../img/g0',num2str(video_num));
+    
+    frame_names = dir(strcat(path,'/*.png')); 
+    
+    bg_frame = imread( strcat(path,'/frame00000.png') ); 
+
+    raw_bg_mask = bg_frame < mean(mean(bg_frame));
+    bg_mask = raw_bg_mask(125:380, 35:625);
+    [interruption, person_in_scene, person_count] = [0, 0, 0];
+    
+    for frame_name = frame_names'
+
+        frame = imread(path_to_frame);
         
-        if(~same_person)
-            
-            person_count = person_count + 1;
-            
-            person_folder = strcat('/person', num2str(person_count));
-            mkdir(path, person_folder); 
-            
-            same_person = true;
-            person_folder2 = strcat( strcat(path, person_folder), '/');
-            imwrite( bg_frame, strcat(person_folder2, 'background.png') );
+        raw_mask = frame < mean(mean(bg_frame));
+        mask = raw_mask(125:380, 35:625);
+        
+        if sum(sum(mask)) > 2900
+            if ~person_in_scene
+                interruption = 0;
+                person_in_scene = 1;
+                person_count = person_count + 1;
+                
+                person_folder = strcat('/person', num2str(person_count));
+                mkdir(path, person_folder);
+            end
+        elseif person_in_scene
+            interruption = interruption + 1;
+        end
+        if interruption > 1
+            interruption = 0;
+            person_in_scene = 0;
+        end
+        if person_in_scene
+           imwrite( frame, strcat(path, person_folder, '/', frame_name.name) );
         end
         
-        imwrite( frame, strcat(person_folder2, frame_name.name) );
-        
-    else
-        if(empty_frames < max_interruption)     
-            empty_frames = empty_frames + 1;
-       
-            if(same_person)
-                imwrite( frame, strcat(person_folder2, frame_name.name) );
-            end
-        else
-            frames_detected = max(size(dir(strcat(person_folder2,'*.png'))));
-            if (frames_detected < min_frames_per_person && same_person)
-                rmdir(person_folder2, 's');
-                person_count = person_count-1;
-            end
-            same_person = false;
-        end
     end
 end

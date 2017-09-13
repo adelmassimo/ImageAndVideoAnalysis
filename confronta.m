@@ -1,13 +1,17 @@
 clear all;
-w1 = 0; w2 = 0; w3 = 1;
+w1 = 1; w2 = 10; w3 = 10;
 myCouple1 = [];
 myCouple2 = [];
 k = 1;
-for video_num = 1 : 22
+upright = false;
+nn = 32;
+r = 4;
+
+for video_num = 1:22
     if(video_num < 10)
-        pathFolder=strcat('img/g00',num2str(video_num),'/person*');
+        pathFolder=strcat('../dataset/g00',num2str(video_num),'/p*');
     else
-        pathFolder=strcat('img/g0',num2str(video_num),'/person*');
+        pathFolder=strcat('../dataset/g0',num2str(video_num),'/p*');
     end
     
     disp(strcat('Video ', num2str(video_num)));
@@ -18,12 +22,12 @@ for video_num = 1 : 22
     else
         num_persons = max(size((persons)));
     end
-    %scorro la prima metà delle persone (tanto poi sono i soliti che
+    %scorro la prima met? delle persone (tanto poi sono i soliti che
     %tornano indietro)
     for i = 1 : (num_persons)/2
         best_score = inf; best = 0;
         person = persons(i);
-        path = strcat(person.folder,'/', person.name,'/Normalized/Planes/');
+        path = strcat(person.folder,'/', person.name,'/');
         
         XYP = imread(strcat(path, 'XYPlane.png'));
         XTP = imread(strcat(path, 'XTPlane.png'));
@@ -32,15 +36,15 @@ for video_num = 1 : 22
         %         lbpXY1 = extractLBPFeatures(XYP,'Upright', false, 'NumNeighbors', 16, 'Radius', 4);
         %         lbpXT1 = extractLBPFeatures(XTP,'Upright', false, 'NumNeighbors', 16, 'Radius', 4);
         %         lbpYT1 = extractLBPFeatures(YTP,'Upright', false, 'NumNeighbors', 16, 'Radius', 4);
-        lbpXY1 = extractLBPFeatures(XYP,'Upright', true, 'NumNeighbors', 16, 'Radius', 4);
-        lbpXT1 = extractLBPFeatures(XTP,'Upright', true, 'NumNeighbors', 16, 'Radius', 4);
-        lbpYT1 = extractLBPFeatures(YTP,'Upright', true, 'NumNeighbors', 16, 'Radius', 4);
+        lbpXY1 = extractLBPFeatures(XYP,'Upright', upright, 'NumNeighbors', nn, 'Radius', r);
+        lbpXT1 = extractLBPFeatures(XTP,'Upright', upright, 'NumNeighbors', nn, 'Radius', r);
+        lbpYT1 = extractLBPFeatures(YTP,'Upright', upright, 'NumNeighbors', nn, 'Radius', r);
         lbp1 = [lbpXY1, lbpXT1, lbpYT1];
         
         for j = (num_persons)/2 + 1 : num_persons
             
             person = persons(j);
-            path = strcat(person.folder,'/', person.name,'/Normalized/Planes/');
+            path = strcat(person.folder,'/', person.name,'/');
             XYP2 = fliplr(imread(strcat(path, 'XYPlane.png')));
             XTP2 = fliplr(imread(strcat(path, 'XTPlane.png')));
             YTP2 = fliplr(imread(strcat(path, 'YTPlane.png')));
@@ -48,19 +52,22 @@ for video_num = 1 : 22
             %             lbpXT2 = extractLBPFeatures(XTP2,'Upright', false, 'NumNeighbors', 16, 'Radius', 4);
             %             lbpYT2 = extractLBPFeatures(YTP2,'Upright', false, 'NumNeighbors', 16, 'Radius', 4);
             %
-            lbpXY2 = extractLBPFeatures(XYP2,'Upright', true, 'NumNeighbors', 16, 'Radius', 4);
-            lbpXT2 = extractLBPFeatures(XTP2,'Upright', true, 'NumNeighbors', 16, 'Radius', 4);
-            lbpYT2 = extractLBPFeatures(YTP2,'Upright', true, 'NumNeighbors', 16, 'Radius', 4);
+            lbpXY2 = extractLBPFeatures(XYP2,'Upright', upright, 'NumNeighbors', nn, 'Radius', r);
+            lbpXT2 = extractLBPFeatures(XTP2,'Upright', upright, 'NumNeighbors', nn, 'Radius', r);
+            lbpYT2 = extractLBPFeatures(YTP2,'Upright', upright, 'NumNeighbors', nn, 'Radius', r);
             
             lbp2 = [lbpXY2, lbpXT2, lbpYT2];
-            
-            lbp = [(lbpXY1-lbpXY2).^2, (lbpXT1-lbpXT2).^2, (lbpYT1-lbpYT2).^2];
-            
+            %usare distanza chiquadro
+    %   The chi-squared distance between two vectors is defined as:
+    %    d(x,y) = sum( (xi-yi)^2 / (xi+yi) ) / 2;
+    %   The chi-squared distance is useful when comparing histograms.
+            %lbp = [(lbpXY1-lbpXY2).^2, (lbpXT1-lbpXT2).^2, (lbpYT1-lbpYT2).^2];
+            lbp = (lbp1-lbp2).^2/(lbp1+lbp2);
             %             figure;
             %             bar(lbp);
             %             title(strcat(num2str(i), '-', num2str(j)));
             
-            meanD = sum(lbp);
+            meanD = sum(lbp)/2;
             couple(i,j) = meanD;
             meanD = sum(w1*(lbpXY1-lbpXY2).^2 + w2*(lbpXT1-lbpXT2).^2 + w3*(lbpYT1-lbpYT2).^2);
             
@@ -83,4 +90,4 @@ end
 myCouple1 = myCouple1';
 myCouple2 = myCouple2';
 
-%score;
+score;

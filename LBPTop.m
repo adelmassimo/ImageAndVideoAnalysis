@@ -1,8 +1,21 @@
 path_normalized = strcat(path_person, '/Normalized');
-frame_names = dir(strcat(path_normalized,'/F*.png'));
-new_folder = '/Planes';
-mkdir(path_normalized, new_folder); 
-new_path = strcat(strcat(path_normalized, new_folder), '/');
+frame_names = dir(strcat(path_normalized,'/f*.png'));
+
+ 
+if video_num < 10
+    if person_num < 10
+        new_path = strcat('../dataset/g00',int2str(video_num),'/p0', int2str(person_num), '/');
+    else
+        new_path = strcat('../dataset/g00',int2str(video_num),'/p', int2str(person_num), '/');
+    end
+else
+    if person_num < 10
+        new_path = strcat('../dataset/g0',int2str(video_num),'/p0', int2str(person_num), '/');
+    else
+        new_path = strcat('../dataset/g0',int2str(video_num),'/p', int2str(person_num), '/');
+    end
+end
+mkdir(new_path);
 iteration = 1; %per distinguere il primo frame, che sar? sempre quello centrale.
 
 central_frame_x = x_window/2;
@@ -17,9 +30,10 @@ for frame_name = frame_names'
     
     path_to_frame = strcat(frame_name.folder,'/', frame_name.name);
     frame = imread(path_to_frame);
+
     
-    XTPlanes(:,iteration) = frame(:, floor(central_frame_y));
-    YTPlanes(iteration,:) = frame(floor(central_frame_x), :);
+    XTPlanes(:,iteration) = mean( frame' );
+    YTPlanes(iteration,:) = mean(frame) ;
 
     iteration = iteration + 1;
     

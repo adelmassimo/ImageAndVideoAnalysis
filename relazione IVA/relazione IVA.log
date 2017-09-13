@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.11)  10 JUL 2017 12:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.11)  11 SEP 2017 16:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -235,16 +235,16 @@ Package pdftex.def Info: immagini/base-scheme.png used on input line 54.
 <immagini/img-02.png, id=26, 2890.8pt x 1405.8924pt>
 File: immagini/img-02.png Graphic file (type png)
  <use immagini/img-02.png>
-Package pdftex.def Info: immagini/img-02.png used on input line 70.
+Package pdftex.def Info: immagini/img-02.png used on input line 71.
 (pdftex.def)             Requested size: 289.09694pt x 140.59747pt.
 
-./relazione IVA.tex:75: Undefined control sequence.
+./relazione IVA.tex:76: Undefined control sequence.
 <argument> ...z@ \footnotesep \ignorespaces \href 
                                                   {https://structure.io/open...
-l.75 ...tnote{\href{https://structure.io/openni}}}
+l.76 ...tnote{\href{https://structure.io/openni}}}
                                                   .
 ? 
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 78.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 79.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
@@ -253,52 +253,27 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 1.
  [4 <./immagini/img-02.png>])
 
-./relazione IVA.tex:80: LaTeX Error: There's no line here to end.
+./relazione IVA.tex:81: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.80 \\È
+l.81 \\È
          importante sottolineare che i depth frame sono codificati in scala ...
 
 ? 
-(./codes/classifyPerson-sample.m
-Overfull \hbox (68.32805pt too wide) in paragraph at lines 7--8
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+(./codes/classifyPerson-sample.m [5]
+Overfull \hbox (14.00713pt too wide) in paragraph at lines 27--28
+[][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (11.74434pt too wide) in paragraph at lines 8--10
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (50.78671pt too wide) in paragraph at lines 38--39
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[5]
-Overfull \hbox (4.95387pt too wide) in paragraph at lines 33--34
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (21.92899pt too wide) in paragraph at lines 34--35
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (19.6655pt too wide) in paragraph at lines 44--45
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (38.9041pt too wide) in paragraph at lines 47--48
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (4.95387pt too wide) in paragraph at lines 48--49
-[][][][][][][][][][][][][][][][] 
- []
-
-) [6]
+)
 
 ! Package Listings Error: File `codes/centralFrameDetector-sample(.m)' not foun
 d.
@@ -314,19 +289,19 @@ Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: m)
 
 Enter file name: 
-[7] (./relazione IVA.aux)
+[6] (./relazione IVA.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3761 strings out of 493089
- 50607 string characters out of 6134842
- 134977 words of memory out of 5000000
- 7190 multiletter control sequences out of 15000+600000
+ 3738 strings out of 493089
+ 50341 string characters out of 6134842
+ 131977 words of memory out of 5000000
+ 7167 multiletter control sequences out of 15000+600000
  16929 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,8n,40p,622b,1762s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,8n,40p,639b,1760s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
 /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></us
@@ -341,10 +316,10 @@ e/2015/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/
 2015/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/20
 15/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2015
 /texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on "relazione IVA.pdf" (7 pages, 693258 bytes).
+Output written on "relazione IVA.pdf" (6 pages, 693143 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
+ 81 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

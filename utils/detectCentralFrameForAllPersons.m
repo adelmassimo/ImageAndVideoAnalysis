@@ -7,10 +7,10 @@ for i = 1:22
     end
     
     for person = dir(pathFolder)'
-        path = strcat(person.folder,'/', person.name);
+        path_person = strcat(person.folder,'/', person.name);
         %ClassifiePerson
         %centralFrameDetector
-        cutAndNormalize
-        %LBPTop
+        %cutAndNormalize
+        LBPTop
     end
 end
