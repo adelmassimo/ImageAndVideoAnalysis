@@ -3,9 +3,8 @@ from openni import openni2
 import png
 
 
-path = "/Volumes/Volume/Top-view-TVPR/"
+path = "../../Top-view-TVPR/"
 prefix = "g0"
-filename = "g016"
 
 def number2string(num):
 	if( num < 10 ):
@@ -34,7 +33,7 @@ def print_frame(frame_data, index):
 
     imgMatrix = imgMatrix/max*2**16
 
-    png.from_array(imgMatrix.astype(np.uint16), "L").save("/Users/adel/Desktop/ProgettoPala/img/"+filename+"/frame"+number2string(index)+".png")
+    png.from_array(imgMatrix.astype(np.uint16), "L").save("../../img/"+filename+"/frame"+number2string(index)+".png")
 
 for i in range(17, 23):
 	filename = prefix + str(i)

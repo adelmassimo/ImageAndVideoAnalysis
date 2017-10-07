@@ -1,30 +1,5 @@
 tic
-control_matrix = [
-1 8,
-2 6,
-3 4,
-4 6,
-5 8,
-6 14,
-7 12+1,
-8 6,
-9 8,
-10 12,
-11 10,
-12 14,
-13 12,
-14 10,
-15 12,
-16 8,
-17 10,
-18 6,
-19 10,
-20 8,
-21 4,
-22 6
-];
-mymatrix = zeros(22,2);
-for video_num = 15
+for video_num = 1:22
     if(video_num < 10)
         path=strcat('../img/g00',num2str(video_num));
     else
@@ -36,7 +11,10 @@ for video_num = 15
     bg_frame = imread( strcat(path,'/frame00000.png') ); %assegno frame di backGround
 
     raw_bg_mask = bg_frame < mean(mean(bg_frame));
+    %the following is a more step to improve precision: deleted areas 
+    %"unwalkable" that can cause only noise.
     bg_mask = raw_bg_mask(125:380, 35:625);
+    
     interruption = 0;
     person_in_scene = 0;
     person_count = 0;
@@ -52,7 +30,7 @@ for video_num = 15
         raw_mask = frame < mean(mean(bg_frame));
         mask = raw_mask(125:380, 35:625);
         
-        if sum(sum(mask)) > 2900
+        if sum(sum(mask)) > 3000
             if ~person_in_scene
                 interruption = 0;
                 person_in_scene = 1;
@@ -70,22 +48,15 @@ for video_num = 15
         elseif person_in_scene
             interruption = interruption + 1;
         end
-        if interruption > 1
+        if interruption > 3
             interruption = 0;
             person_in_scene = 0;
         end
         
         if person_in_scene
-           %salvo
            imwrite( frame, strcat(path, person_folder, '/', frame_name.name) );
-           %imshow(mask)
         end
-        %waitforbuttonpress
-        
     end
-    mymatrix(video_num, :) = [0, person_count];
-    control_matrix-mymatrix
 
 end
-control_matrix-mymatrix
 toc
